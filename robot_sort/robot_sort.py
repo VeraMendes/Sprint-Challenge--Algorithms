@@ -99,15 +99,42 @@ class SortingRobot:
         """
         # Robot
 
-        # keep light on while sorting objects and turn light off when finish the sorting task
-        # while light is on keep going, when light turns off, stop.
+        # keep light on while not sorting objects and turn light off when sorting
+        # while light is off keep going, when light turns on, go back for a new loop.
+        self.set_light_on()
 
-        # start on the left of the list
+        while self.light_is_on():
+            self.set_light_off()
 
-        # pick up first item a, compare with item b, pick up item b if smaller than item a
-        # (when picking up, we swap the items), don't pick up item b and move to the right if item b is bigger than item a.  
+            # start on the left of the list
+            while self.can_move_left():
+                self.move_left()
 
-        pass
+            # pick up first item a, compare with item b, pick up item b if smaller than item a
+            # (when picking up, we swap the items), don't pick up item b and move to the right if item b is bigger than item a.  
+                
+                # robot pick up the first item with swap_item method
+                # and then move to the right to compare with next item
+            while self.can_move_right():
+                self.swap_item()
+                self.move_right()
+                    
+                # robot swap items, go back to drop the item held after swap
+                # robot moves right to continue sorting the next item
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                    self.set_light_on()
+                    
+                # for values smaller or equal than value that robot is helding 
+                else:
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()                  
+
+
 
 
 if __name__ == "__main__":
