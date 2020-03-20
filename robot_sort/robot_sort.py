@@ -94,9 +94,19 @@ class SortingRobot:
 
     def sort(self):
         """
-        Sort the robot's list.
+        Sort the robot's list with Bubble sort.
+        Robot will repeatedly compare and swap the adjacent elements if they are in the wrong order.
         """
-        # Fill this out
+        # Robot
+
+        # keep light on while sorting objects and turn light off when finish the sorting task
+        # while light is on keep going, when light turns off, stop.
+
+        # start on the left of the list
+
+        # pick up first item a, compare with item b, pick up item b if smaller than item a
+        # (when picking up, we swap the items), don't pick up item b and move to the right if item b is bigger than item a.  
+
         pass
 
 
